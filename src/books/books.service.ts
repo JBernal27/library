@@ -18,7 +18,8 @@ export class BooksService {
   }
 
   findAll() {
-    return `This action returns all books`;
+    const books = this.bookRepository.find({ where: { is_deleted: false } });
+    return books;
   }
 
   findOne(id: number) {
