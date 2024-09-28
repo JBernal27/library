@@ -2,6 +2,7 @@ import { genres } from 'src/common/enums';
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -24,9 +25,15 @@ export class Book {
   @Column()
   genre: genres;
 
+  @Column({ default: false })
+  is_deleted: boolean;
+
   @CreateDateColumn({ type: 'timestamptz' })
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn({ type: 'timestamptz' })
-  updatedAt: Date;
+  updated_at: Date;
+
+  @DeleteDateColumn({ type: 'timestamptz' })
+  deleted_at: Date;
 }
